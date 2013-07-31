@@ -1,0 +1,412 @@
+<!-- *****************************************************
+
+HTML Email Template
+author: @tim_freedman
+----------------------------------------------------------
+This file contains a basic HTML email structure with 
+common fields and rows which can be reused
+to reduce build time and ensure email client compatibility.
+
+Structure
+----------------------------------------------------------
+The template follows this basic structure:
+(inline comments have corresponding names for the sections)
+
+<wrapper>
+	<content>
+        </ header>
+        </ content row>
+        </ content row>
+        </ content row>
+        </ footer>
+    </content>
+</wrapper>
+
+The structure uses a wrapping table of 100% width to put 
+the content table in the center of the page. The content
+then contains a series of nested tables which build the
+header, footer and multiple content rows.
+
+Standards
+----------------------------------------------------------
+This template uses a few standard rules for it's code
+which have all been adopted from various standards
+available from resources online.
+
+1. Nest your tables
+- To avoid going crazy and prevent email clients from
+applying their own resizing to your rows and columns
+always use nested tables and NEVER user "colspan" or
+"rowspan", keep it simple.
+
+2. header styles and inline styles
+This template comes with a few styles in the <head>,
+they are all fixes/hacks for particular email clients
+so don't remove them, but at the same time don't add to 
+them either unless you have to add another fix. Make sure 
+you do all of your element styling INLINE, you'll see below 
+that all text elements are wrapped in a <span> tag, you 
+could use another tag but I find this to be the safest as it 
+has not default styles. Each one has all of it's styles
+set on itself, forcing an overwrite to any other styles
+that may be applying to it.
+
+3. No margin or padding
+You find any CSS margin or padding decleratrions here,
+email clients render these very differently (or not at 
+all). The best way to get around this is to use a nested
+table with spacing rows/columns.
+
+4. Images
+There are no example images here, but when you add some
+make sure you add the border="0" attribute when wrapped in
+a link. Always add the "display:block" inline style, and
+define the width and height of the image in the imagaes
+attributes.
+
+5. Text styles
+All text elements have a few mandatory styles set:
+- font-size(px)
+- line-height(px)
+- font-family(web safe)
+- colour(6 digit hex code)
+Using these four basic styles on every text element ensures 
+a consistent rendering of text on just about all email 
+clients. Make sure that you add an inline clolour style
+to <a> tags seperately as some clients will overwrite
+your colour setting.
+
+References
+----------------------------------------------------------
+These are a few of the resources I refer to when building
+HTML emails, and alot of the standards I use for emails
+have come from these.
+- http://www.campaignmonitor.com/resources/will-it-work/guidelines/
+- http://www.campaignmonitor.com/css/
+- http://24ways.org/2009/rock-solid-html-emails/
+- https://litmus.com/blog/16-tips-troubleshooting-html-email
+
+I also keep all of my favorite resources in a Kippt
+- https://kippt.com/tim545/html-emails
+
+
+***************************************************** -->
+
+<html>
+<head>
+<style>
+	body, table, td, span, p, font {
+		-webkit-text-size-adjust:none; -ms-text-size-adjust:none; /* Stop mobile phones from changing text sizes */
+		line-height:100%; /* Force outlook.com to render normal line heights */
+	}
+	.ExternalClass {width:100%;} /* Forces Hotmail to display emails at full width */
+	body {margin:0; padding:0;} /* Resets all body margins and padding to 0 for good measure */
+</style>
+</head>
+<body>
+	
+    <!-- WRAPPER -->
+    <table class="wrapper" cellpadding="0" cellspacing="0" border="0" width="100%">
+    	<tr>
+        	<td>&nbsp;</td>
+        	<td width="600" valign="top" align="left">
+            	
+                <!-- CONTENT -->
+                <table class="content" cellpadding="0" cellspacing="0" border="0" width="100%">
+                
+                <!-- HEADER -->
+                <tr class="headline-row">
+                    <td>
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                                <td>
+                                	<table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                    	<tr><td height="10" style="font-size:10px; line-height:10px;"></td></tr>
+                                        <tr>
+                                        	<td align="center">
+                                            	<span style="font-size:10px; line-height:14px; font-family:Arial, Helvetica, sans-serif; color:#555555;">Email not displaying correctly? <a href="#" target="_blank" style="color:#000000;"><span>View</span></a> it in your browser.</span>
+                                            </td>
+                                        </tr>
+                                        <tr><td height="10" style="font-size:10px; line-height:10px;"></td></tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- // HEADER -->
+                
+                <!-- CONTENT FULL WIDTH ROW -->
+                <tr class="inner-content-row">
+                	<td bgcolor="#f3f3f3">
+                        <span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;">
+                        	Full width row. Good for banner images
+                        </span>
+                    </td>
+                </tr>
+                <!-- // CONTENT FULL WIDTH ROW -->
+                
+                <!-- SPACER -->
+                <tr><td height="10" style="font-size:10px; line-height:10px;"></td></tr>
+                
+                <!-- CONTENT ROW WITH COLUMNS -->
+                <tr class="inner-content-row">
+                    <td>
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                            	<td width="15"></td>
+                                <td>
+                                    <!-- LEFT COLUMN -->
+                                    <table class="column-left" cellpadding="0" cellspacing="0" border="0" width="100%">
+                                        <tr>
+                                            <td>
+                                            	<span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;">Left Column</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- // LEFT COLUMN -->
+                                    
+                                </td>
+                                <td width="15"></td>
+                             	<td>
+                                    <!-- RIGHT COLUMN -->
+                                    <table class="column-right" cellpadding="0" cellspacing="0" border="0" width="100%">
+                                        <tr>
+                                            <td>
+                                                <span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;">Right Column</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- // RIGHT COLUMN -->
+                                </td>
+                                <td width="15"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- // CONTENT ROW WITH COLUMNS -->
+                
+                <!-- SPACER -->
+                <tr><td height="10" style="font-size:10px; line-height:10px;"></td></tr>
+                
+                <!-- CONTENT ROW WITH TABLE CELL SPACING -->
+                <tr class="inner-content-row">
+                	<td>
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                            	<td width="15"></td>
+                                <td>
+                                    <span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;">Content row with horizontal table cell spacing. A superscript has styles<sup style="font-size:9px; line-height:5px;">1</sup>.</span>
+                                </td>
+                                <td width="15"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- // CONTENT ROW WITH TABLE CELL SPACING -->
+                
+                <!-- SPACER -->
+                <tr><td height="10" style="font-size:10px; line-height:10px;"></td></tr>
+                
+                <!-- CONTENT ROW WITH UNORDERED LIST -->
+                <tr class="inner-content-row">
+                	<td>
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                            	<td width="15"></td>
+                                <td>
+                                    <table cellpadding="2" cellspacing="2" border="0"> 
+                                        <tr>
+                                            <td valign="top"><span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;">&bull;</span></td>
+                                            <td><span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;">List Item</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top"><span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;">&bull;</span></td>
+                                            <td><span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;">List Item</span></td>
+                                        </tr>
+                                    </table> 
+                                </td>
+                                <td width="15"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- // CONTENT ROW WITH UNORDERED LIST -->
+                
+                <!-- SPACER -->
+                <tr><td height="10" style="font-size:10px; line-height:10px;"></td></tr>
+                
+                <!-- CONTENT ROW WITH ORDERED LIST -->
+                <tr class="inner-content-row">
+                	<td>
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                            	<td width="15"></td>
+                                <td>
+                                    <table cellpadding="2" cellspacing="2" border="0"> 
+                                        <tr>
+                                            <td valign="top"><span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;">1.</span></td>
+                                            <td><span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;">List Item</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top"><span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;">2.</span></td>
+                                            <td><span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;">List Item</span></td>
+                                        </tr>
+                                    </table> 
+                                </td>
+                                <td width="15"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- // CONTENT ROW WITH ORDERED LIST -->
+                
+                <!-- SPACER -->
+                <tr><td height="10" style="font-size:10px; line-height:10px;"></td></tr>
+                
+                <!-- CONTENT ROW WITH 3 COLUMNS -->
+                <tr>
+                    <td>
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                                <td bgcolor="#f3f3f3" width="168">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                        <tr><td height="15" style="font-size:15px; line-height:15px;"></td></tr>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    <tr>
+                                                        <td width="10"></td>
+                                                        <td height="230" valign="top">
+                                                            <span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#378dc4;"><strong>Column heading</strong></span>
+                                                            <br/><br/>
+                                                            <span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;"><strong>Section &ndash;</strong> Description of a section with content. Description of a section with content</span>
+                                                            <br/><br/>
+                                                            <span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;"><strong>Section &ndash;</strong> Description of a section with content. Description of a section with content</span>
+                                                            <br/><br/>
+                                                            <span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;"><strong>Section &ndash;</strong> Description of a section with content</span>
+                                                        </td>
+                                                        <td width="10"></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr><td height="15" style="font-size:15px; line-height:15px;"></td></tr>
+                                    </table>
+                                </td>
+                                <td width="10"></td>
+                                <td bgcolor="#f3f3f3" width="168">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                        <tr><td height="15" style="font-size:15px; line-height:15px;"></td></tr>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    <tr>
+                                                        <td width="10"></td>
+                                                        <td height="230" valign="top">
+                                                            <span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#378dc4;"><strong>Column heading</strong></span>
+                                                            <br/><br/>
+                                                            <span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;"><strong>Section &ndash;</strong> Description of a section with content. Description of a section with content</span>
+                                                            <br/><br/>
+                                                            <span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;"><strong>Section &ndash;</strong> Description of a section with content. Description of a section with content</span>
+                                                        </td>
+                                                        <td width="10"></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr><td height="15" style="font-size:15px; line-height:15px;"></td></tr>
+                                    </table>
+                                </td>
+                                <td width="10"></td>
+                                <td bgcolor="#f3f3f3" width="168">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                        <tr><td height="15" style="font-size:15px; line-height:15px;"></td></tr>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    <tr>
+                                                        <td width="10"></td>
+                                                        <td height="230" valign="top">
+                                                            <span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#378dc4;"><strong>Column heading</strong></span>
+                                                            <br/><br/>
+                                                            <span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;"><strong>Section &ndash;</strong> Description of a section with content.</span>
+                                                            <br/><br/>
+                                                            <span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;"><strong>Link &ndash;</strong> visit <a href="http://www.google.com.au/" target="_blank" style="color:#378dc4; text-decoration:underline;"><span style="color:#378dc4;">google.com.au</span></a> and type in your search term</span>
+                                                            <br/><br/>
+                                                            <span style="font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif; color:#555555;"><strong>Section &ndash;</strong> Description of a section with content. Description of a section with content</span>
+                                                        </td>
+                                                        <td width="10"></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr><td height="15" style="font-size:15px; line-height:15px;"></td></tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                   	</td>
+                </tr>
+                <!-- CONTENT ROW WITH 3 COLUMNS -->
+                
+                <!-- SPACER -->
+                <tr><td height="10" style="font-size:10px; line-height:10px;"></td></tr>
+                
+                <!-- FOOTER -->
+                <tr class="footer-row">
+                    <td valign="top" align="left">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                                <td width="15"></td>
+                                <td>
+                                	<table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                        <tr>
+                                        	<td width="140"></td>
+                                            <td align="center">
+                                                <a href="#" style="color:#3a3a3a; font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif;" target="_blank"><span style="color:#3a3a3a;">Contact Us</span></a>
+                                            </td>
+                                            <td width="20px" align="center" style="color:#3a3a3a;font-size:11px;">|</td>
+                                            <td align="center">
+                                                <a href="#" style="color:#3a3a3a; font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif;" target="_blank"><span style="color:#3a3a3a;">Privacy Statement</span></a>
+                                            </td>
+                                            <td width="20px" align="center" style="color:#3a3a3a;font-size:11px;">|</td>
+                                            <td align="center">
+                                                <a href="#" style="color:#3a3a3a; font-size:12px; line-height:16px; font-family:Arial, Helvetica, sans-serif;" target="_blank"><span style="color:#3a3a3a;">Unsubscribe</span></a>
+                                            </td>
+                                            <td width="140"></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="15"></td>
+                            </tr>
+                            <tr>
+                            	<td width="15"></td>
+                            	<td height="10" style="font-size:10px; line-height:10px;"></td>
+                                <td width="15"></td>
+                            </tr>
+                            <tr>
+                                <td width="15"></td>
+                                <td align="center">
+                                    <span style="color:#999999; font-size:11px; line-height:12px; font-family:Arial, Helvetica, sans-serif;">Footer text</span>
+                                </td>
+                                <td width="15"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- // FOOTER -->
+                
+                <!-- SPACER -->
+                <tr><td height="10" style="font-size:10px; line-height:10px;"></td></tr>
+                
+            </table>
+                
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>    
+   	<!-- // WRAPPER -->
+
+</body>
+</html>
